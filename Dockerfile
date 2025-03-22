@@ -45,7 +45,7 @@ RUN apt-get -y install git \
 # "As of this writing, use Ruby 3.1.2
 # "Based on: https://talk.jekyllrb.com/t/liquid-4-0-3-tainted/7946/12"
 ENV RBENV_ROOT /usr/local/src/rbenv
-ENV RUBY_VERSION 3.4.1
+ENV RUBY_VERSION 3.1.2
 ENV PATH ${RBENV_ROOT}/bin:${RBENV_ROOT}/shims:$PATH
 
 # "#################################################"
