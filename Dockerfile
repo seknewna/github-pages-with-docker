@@ -39,27 +39,27 @@ RUN apt-get -y install git \
     libgdbm-dev \
     libdb-dev \
     apt-utils
-    
+
 # "#################################################"
 # "GitHub Pages/Jekyll is based on Ruby. Set the version and path"
 # "As of this writing, use Ruby 3.1.2
 # "Based on: https://talk.jekyllrb.com/t/liquid-4-0-3-tainted/7946/12"
 ENV RBENV_ROOT /usr/local/src/rbenv
-ENV RUBY_VERSION 3.4.2
+ENV RUBY_VERSION 3.1.2
 ENV PATH ${RBENV_ROOT}/bin:${RBENV_ROOT}/shims:$PATH
 
 # "#################################################"
 # "Install rbenv to manage Ruby versions"
 RUN git clone https://github.com/rbenv/rbenv.git ${RBENV_ROOT} \
-  && git clone https://github.com/rbenv/ruby-build.git \
+    && git clone https://github.com/rbenv/ruby-build.git \
     ${RBENV_ROOT}/plugins/ruby-build \
-  && ${RBENV_ROOT}/plugins/ruby-build/install.sh \
-  && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
+    && ${RBENV_ROOT}/plugins/ruby-build/install.sh \
+    && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh
 
 # "#################################################"
 # "Install ruby and set the global version"
 RUN rbenv install ${RUBY_VERSION} \
-  && rbenv global ${RUBY_VERSION}
+    && rbenv global ${RUBY_VERSION}
 
 # "#################################################"
 # "Install the version of Jekyll that GitHub Pages supports"
@@ -67,4 +67,4 @@ RUN rbenv install ${RUBY_VERSION} \
 # "Note: If you always want the latest 3.9.x version,"
 # "       use this line instead:"
 # "       RUN gem install jekyll -v '~>3.9'"
-RUN gem install jekyll -v '4.4.0'
+RUN gem install jekyll -v '3.9.3'
